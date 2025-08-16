@@ -89,7 +89,7 @@ const Cartitem = () => {
         const user = localStorage.getItem("user");
         const userid = JSON.parse(user).user._id;
         console.log(userid)
-        console.log(usercartitem)
+        // console.log(usercartitem)
 
         let data = await fetch(`http://localhost:3400/placeorder/${userid}`,{
           method:'post',
