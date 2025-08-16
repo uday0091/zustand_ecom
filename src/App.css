@@ -1,0 +1,231 @@
+/* @import "tailwindcss"; */
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+ul a {
+  text-decoration: none; 
+  list-style: none;
+}
+
+#root {
+  --bg-color: rgb(212, 195, 173);
+  /* --bg-color: rgb(211, 139, 45); */
+}
+
+.userinfo{
+
+  display: none;
+  
+}
+.userinfo1{
+  display: block;
+  z-index: 11111;
+}
+.btncolor{
+  background:linear-gradient(33deg, rgb(218, 194, 194),rgb(219, 92, 130),rgb(202, 202, 153));
+  padding: 8px;
+  border-radius: 7px;
+}
+
+.page {
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cascading-right {
+  margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+.loginpage {
+  backgroud-color: #9a616d;
+}
+
+/* signup page */
+
+.signup_page {
+  padding: 25px;
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+
+/* dashboard */
+
+.dashpage {
+  width:100%;
+  height: calc(93vh - 15px);
+  /* background-color: var(--bg-color); */
+  display: flex;
+  align-items: center;
+  position: relative;
+  
+}
+
+.sidedash {
+  width: 200px;
+  height: calc(93vh - 15px);
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+
+}
+.sidedash ul {
+  display: flex;
+  flex-wrap: initial ;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dashmain {
+  width: calc(100% - 210px);
+  height: calc(93vh - 15px);
+  background-color: rgb(196, 177, 129);
+  position: fixed;
+  right: 0;
+  
+}
+.dashcontent{
+  width:100%;
+  height: 100%;
+  background-color: rgb(196, 177, 129);
+  overflow-x: hidden;
+  /* display: flex;
+  justify-content: center; */
+}
+
+
+/*  ............item master............. */
+.mst{
+  list-style: none;
+  cursor: pointer;
+}
+
+.master li{
+  display: none; 
+}
+.master1 li {
+  list-style: none;
+}
+.master1{
+  background-color: rgb(223, 162, 177);
+}
+
+.itmform{
+  height: 400px;
+  width: 500px;
+  background-color: #85646b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column ;
+  border-radius: 10px;
+  
+}
+
+/* ............. product ............ */
+
+
+.product-main{
+  height: 90%;
+  width: 90%;
+  background: linear-gradient(120deg,rgb(202, 179, 179),rgb(158, 126, 126),rgb(230, 180, 189),rgb(102, 44, 55));
+}
+
+
+
+/* ............cartitem............... */
+.cartitem{
+  min-height: 200px;
+  width: 100%;
+  background-color: rgb(230, 221, 221);
+  color: black;
+  text-align: center;
+}
+
+.orderitem{
+  height: 65vh;
+  width: 100%;
+  background-color: aliceblue;
+  overflow-X: hidden;
+}
+
+.totalpart{
+  height: 15vh;
+  background-color: rgb(155, 224, 201);
+}
+
+.buttonposition{
+  position:absolute;
+  left: 5px;
+  top: 5px;
+}
+.buttonposition:nth-child(1){
+  width: 300px;
+
+}
+
+
+
+/* ...................userorder................... */
+.userorder{
+  min-height: 200px;
+  width: 100%;
+  background-color: rgb(230, 221, 221);
+  color: black;
+  text-align: center;
+}
+
+.userorderitem{
+  height: 100vh;
+  width: 100%;
+  background-color: aliceblue;
+  overflow-X: hidden;
+}
+
+
+.orderview{
+  width: 100%;
+  position: fixed;
+  top: 70px;
+  right: -1920px;
+  transition: all .5s ease-out;
+}
+.orderview1{
+  width: 100%;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  transition: all .5s ease-in;
+}
+
+
+  
+
+@media screen and (width < 375px ) {
+  .noview,h2{
+    display: none;
+  }
+  .tblid{
+  background: red !important ;
+    width: 20px !important;
+    overflow: hidden;
+  }
+} 
