@@ -3,12 +3,26 @@ import { Link, useNavigate } from 'react-router-dom';
 import authuser from '../../Store/store';
 import useCartStore from '../../Store/addtocart';
 
-const Nav = () => {
+const Nav = ({cartlength}) => {
 
 
 const cartItems = useCartStore((state) => state.cartItems);
 
-console.log(cartItems)
+
+let newcartlength = 0;
+function getquantity(e){
+  if(e){
+    cartlength.map((lngth)=>{
+      return newcartlength += lngth.quantity
+    })
+  }
+ 
+}
+
+getquantity(cartlength)
+
+
+console.log(newcartlength)
 // let totalquantity = 0
 // function quantityofproduct (){
 //    cartItems.map((qnty)=>{
@@ -88,7 +102,7 @@ function handlelogout(){
   </div>
             
           <Link class="nav-link text-dark px-3 " to="/cartitem">
-          <i class="fa-solid fa-cart-shopping fs-3" > <span className='text-danger'>{}</span> </i> 
+          <i class="fa-solid fa-cart-shopping fs-3" style={{position:"relative"}} > <span className='text-danger' style={{position:"absolute",left:"10px",top:"-12px"}}>{newcartlength}</span> </i> 
           </Link>
 
           <div className='user' onClick={handleuser} style={{height:"50px",width:"50px", background:"gray",display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"50%"}}>

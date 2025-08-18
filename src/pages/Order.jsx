@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ExcelJS from "exceljs";
+// import ExcelJS from "exceljs";
+import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 
 const Order = () => {
@@ -253,7 +254,7 @@ const Order = () => {
                             <tr key={i}>
                         <td>{i+1}</td>
                         <td><img src={`server/assets/product/${item.image}`} alt="img" style={{width:"40px", borderRadius:"50%"}} /></td>
-                        <td>{item.name}</td>
+                        <td>{item.itemname}</td>
                         <td>{item.gwt}</td>
                         <td>{item.dwt}</td>
                         <td>{item.purity}</td>

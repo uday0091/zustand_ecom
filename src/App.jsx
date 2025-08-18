@@ -23,10 +23,12 @@ let {user, auth} = authuser()
 useEffect(()=>{
   auth()
 },[])
+
+let [cartlength , setcartlength ]=useState(0)
  return(
   <>
   <BrowserRouter>
-  <Nav/>
+  <Nav cartlength={cartlength} />
  
   
     <Routes>
@@ -39,7 +41,7 @@ useEffect(()=>{
       <Route  path='/addproduct' element={ user?.user? <AddProduct/>:<Login/>}/>
       <Route  path='/diacolor' element={ user?.user? <Diacolorclarity/>:<Login/>}/>
       <Route  path='/product/:id' element={ user?.user? <ProductInfo/>:<Login/>}/>
-      <Route  path='/cartitem' element={ user?.user? <Cartitem/>:<Login/>}/>
+      <Route  path='/cartitem' element={ user?.user? <Cartitem cartlength={cartlength} setcartlength={setcartlength}  />:<Login/>}/>
       <Route path='/userorder' element={user?.user? <Order/>:<Login/>} />
 
     </Routes>

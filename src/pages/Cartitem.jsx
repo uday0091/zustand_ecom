@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import cartitemzustand from "../../Store/cartitem.Zustand";
 // import useCartStore from "../../Store/addtocart";
 
-const Cartitem = () => {
+const Cartitem = ({cartlength ,setcartlength}) => {
     let {usercartitem , cartitemBYuser} = cartitemzustand()
     // let {removeFromCart} = useCartStore()
     let [cartitem , setCartItem ]=useState([])
+
+    setcartlength(usercartitem)
     console.log(cartitem)
 
     let sumofgross = 0
@@ -49,12 +51,14 @@ const Cartitem = () => {
                 )
 
               setCartItem([ ...cartitem, decreaseitem])
+              
 
             } else if (data.message === "Item removed from cart") {
               // remove completely
             
               let  removeitem = cartitem.filter((ci) => ci.item !== id)
                 setCartItem([...cartitem , removeitem])
+                setcartlength([ ...cartitem, decreaseitem])
             }
           }
         } catch (error) {
@@ -76,6 +80,7 @@ const Cartitem = () => {
         let res = await data.json()
                 console.log(res)
         setCartItem([...cartitem , res])
+        
       } catch (error) {
         console.log(error)
       }
@@ -103,6 +108,9 @@ const Cartitem = () => {
        if(res.success){
         alert(res.msg)
         // usercartitem = res.emptyusercart
+      cartitemBYuser()
+   
+
         
        }
         
