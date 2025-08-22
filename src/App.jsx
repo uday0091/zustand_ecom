@@ -14,6 +14,7 @@ import Home from './pages/Home'
 import ProductInfo from './pages/Product_info'
 import Cartitem from './pages/Cartitem'
 import Order from './pages/Order'
+import AllProductList from './pages/AllProductList'
 function App() {
 
 let {user, auth} = authuser()
@@ -25,6 +26,7 @@ useEffect(()=>{
 },[])
 
 let [cartlength , setcartlength ]=useState(0)
+let [update , setupdate]= useState(false)
  return(
   <>
   <BrowserRouter>
@@ -43,6 +45,9 @@ let [cartlength , setcartlength ]=useState(0)
       <Route  path='/product/:id' element={ user?.user? <ProductInfo/>:<Login/>}/>
       <Route  path='/cartitem' element={ user?.user? <Cartitem cartlength={cartlength} setcartlength={setcartlength}  />:<Login/>}/>
       <Route path='/userorder' element={user?.user? <Order/>:<Login/>} />
+      <Route path='/allproductlist' element={ user?.user?.role =="admin" ? <AllProductList setupdate={setupdate}/>:<Home/>}/>
+      <Route path='/addproduct/:id' element={ user?.user?.role =="admin" ? <AddProduct update={update} setupdate={setupdate}/>:<Home/>}/>
+
 
     </Routes>
     {/* <Footer/> */}

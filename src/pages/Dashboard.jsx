@@ -110,22 +110,20 @@ userread()
             </Link>
             
               
-              <li className="mst" onClick={handlemaster}>master
+              <li className="mst  " onClick={handlemaster}  > <span className="fs-5 text-dark">Master</span> 
                 <ul className= "master master1">
-                  <li> <Link to="/signup"> Add User</Link></li>
-                  <li> <Link to='/item_master' onClick={handleitem}> item Master</Link></li>
-                  <li> <Link to='/diacolor'> Dia color/clarity</Link></li>
-                  <li> <Link to='/addproduct' > Add Procuct</Link></li>
-                  <li> <Link> Add User  </Link></li>
+                  <li> <Link to="/signup"> <i class="fa-solid fa-user-plus me-2"></i> Add User</Link></li>
+                  <li> <Link to='/item_master' onClick={handleitem}><i class="fa-solid fa-plus me-2"></i>  Item Master</Link></li>
+                  <li> <Link to='/diacolor'> <i class="fa-solid fa-plus me-2"></i>  Dia Clr/Clarity</Link></li>
+                  <li> <Link to='/addproduct' > <i class="fa-solid fa-camera-retro me-2"></i> Add Procuct</Link></li>
+                 
                 </ul>
               </li>
               
-            <Link to="#">
-              <li> User list </li>
+            <Link to="/allproductlist">
+              <li className="fs-5 " style={{color:"ThreeDDarkShadow"}} > All Procuct List</li>
             </Link>
-            <Link to="#">
-              <li> User list </li>
-            </Link>
+           
             {/* <Link to="#">
               <li> User list </li>
             </Link> */}

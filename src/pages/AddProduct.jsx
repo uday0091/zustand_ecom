@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-const AddProduct = () => {
+const AddProduct = ({setupdate , update}) => {
+
+
+  let{id}= useParams()
+  console.log(id)
+
     let [allitem , setAllItem] = useState([])
     let [itemGroup, setItemGroup] = useState()
     let [ color , setColor] = useState([])
@@ -42,7 +48,7 @@ const AddProduct = () => {
         function selectitem(e) {
             const selectedName = e.target.value;
             const selectedItem = allitem.find(item => item.itname === selectedName);
-            const diafield = document.querySelectorAll("#diafield")
+            const diafield = document.querySelectorAll(".diafield")
             // console.log(diafield)
             console.log(selectedItem.itgroup === "Diamond Jewellery")
             if (selectedItem) { 
@@ -103,6 +109,11 @@ const AddProduct = () => {
 
         if(err.length > 0){
           alert(err.join('\n'))
+        }if(update){
+
+          
+
+
         }else{
             let data = await fetch("http://localhost:3400/addproduct",{
               method:"post",
@@ -135,18 +146,73 @@ const AddProduct = () => {
             })
 
             form.reset()
-
-
             }
-           
-            
+        }
+      }
 
+      async function readsingleproduct(){
+        let form = document.querySelector('#productform')
+        console.log(form)
+        try {
+          let data = await fetch(`http://localhost:3400/readprodcut/${id}`)
+          let res = await data.json()
+          console.log(res)
+          if(res.readed){
+
+           form.itemname.value = res.singleproduct.itemname               
+           form.itemgroup.value = res.singleproduct.itemgroup               
+           form.purity.value = res.singleproduct.purity               
+           form.design.value = res.singleproduct.design              
+           form.gwt.value = res.singleproduct.gwt               
+           form.nwt.value = res.singleproduct.nwt               
+           form.dwt.value = res.singleproduct.dwt               
+           form.dwt1.value = res.singleproduct.dwt1               
+           form.dwt2.value = res.singleproduct.dwt2               
+           form.clr.value = res.singleproduct.clr               
+           form.clr1.value = res.singleproduct.clr1               
+           form.clr2.value = res.singleproduct.clr2               
+           form.owt.value = res.singleproduct.owt               
+           form.description.value = res.singleproduct.description               
+
+
+            setProduct({
+              itemname:res.singleproduct.itemname,
+            itemgroup:res.singleproduct.itemgroup,
+            image:res.singleproduct.image,
+            purity:res.singleproduct.purity,
+            design:res.singleproduct.design,
+            gwt:res.singleproduct.gwt,
+            nwt:res.singleproduct.nwt,
+            dwt:res.singleproduct.dwt,
+            clr:res.singleproduct.clr,
+            dwt1:res.singleproduct.dwt1,
+            clr1:res.singleproduct.clr1,
+            dwt2:res.singleproduct.dwt2,
+            clr2:res.singleproduct.clr2,
+            swt:res.singleproduct.swt,
+            swt1:res.singleproduct.swt1,
+            owt:res.singleproduct.owt,
+            mrp:res.singleproduct.mrp,
+            description:res.singleproduct.description
+              
+            })
+          }
+
+          handlecommon(e)
+
+
+        } catch (error) {
+          
         }
 
 
+      }
+      console.log(product)
+      
 
 
-       }
+
+
 
        
 
@@ -154,7 +220,11 @@ const AddProduct = () => {
      useEffect(()=>{
         itemread()
         colorclarityread()
-     },[])   
+        if(id){
+          readsingleproduct()
+          
+        }
+     },[id])   
     return (
         <div className='page'>
             <div className='product-main row'>
@@ -209,12 +279,12 @@ const AddProduct = () => {
   </div>
   <div class="col-lg-1 col-6">
     {/* <label for="inputAddress2" class="form-label">Design No.</label> */}
-    <input type="text" class="form-control" onChange={(e)=>setProduct({...product, dwt:e.target.value})} name='dwt' id="diafield" placeholder="Dia. wt."/>
+    <input type="text"  onChange={(e)=>setProduct({...product, dwt:e.target.value})} name='dwt' className="diafield form-select" placeholder="Dia. wt."/>
   </div>
   <div class="col-lg-1 col-6 ">
   
               {/* <label for="inputState" class="form-label">Item Name</label> */}
-              <select id="diafield" onChange={(e)=>setProduct({...product, clr:e.target.value})} class="form-select" name='clr'>
+              <select className="diafield form-select" onChange={(e)=>setProduct({...product, clr:e.target.value})}  name='clr'>
               <option value=''>select</option>
                 {
                     color.map((color)=>{
@@ -231,12 +301,12 @@ const AddProduct = () => {
   </div>
   <div class="col-lg-1 col-6 ">
     {/* <label for="inputAddress2" class="form-label">Design No.</label> */}
-    <input type="text" class="form-control" onChange={(e)=>setProduct({...product, dwt1:e.target.value})} name='dwt1' id="diafield" placeholder="Dia. wt.1"/>
+    <input type="text"  onChange={(e)=>setProduct({...product, dwt1:e.target.value})} name='dwt1' className="diafield form-select" placeholder="Dia. wt.1"/>
   </div>
   <div class="col-lg-1 col-6 ">
   
               {/* <label for="inputState" class="form-label">Item Name</label> */}
-              <select id="diafield" onChange={(e)=>setProduct({...product, clr1:e.target.value})} class="form-select" name='clr1'>
+              <select className="diafield form-select" onChange={(e)=>setProduct({...product, clr1:e.target.value})}  name='clr1'>
               <option value=''>select</option>
                 {
                     color.map((color)=>{
@@ -253,12 +323,12 @@ const AddProduct = () => {
   </div>
   <div class="col-lg-1 col-6 ">
     {/* <label for="inputAddress2" class="form-label">Design No.</label> */}
-    <input type="text" class="form-control" onChange={(e)=>setProduct({...product, dwt2:e.target.value})} name='dwt2' id="diafield" placeholder="Dia. wt.2"/>
+    <input type="text"  onChange={(e)=>setProduct({...product, dwt2:e.target.value})} name='dwt2' className="diafield form-select" placeholder="Dia. wt.2"/>
   </div>
   <div class="col-lg-1 col-6 ">
   
               {/* <label for="inputState" class="form-label">Item Name</label> */}
-              <select id="diafield" onChange={(e)=>setProduct({...product, clr2:e.target.value})} class="form-select"  name='clr2'>
+              <select className="diafield form-select" onChange={(e)=>setProduct({...product, clr2:e.target.value})}   name='clr2'>
               <option value=''>select</option>
                 {
                     color.map((color)=>{

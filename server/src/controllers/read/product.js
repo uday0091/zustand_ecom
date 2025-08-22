@@ -23,3 +23,16 @@ app.get("/product/:id", async (req , res)=>{
        console.log(error) 
     }
 })
+
+app.get("/readprodcut/:id",async (req ,res )=>{
+    let id = req.params.id
+    console.log(id,"18")
+    try {
+        let singleproduct = await productModel.findOne({_id : id}).select("-createdAt -updatedAt -__v ")
+        res.json({readed: true , singleproduct})
+        console.log(singleproduct)
+    } catch (error) {
+        console.log(error)
+        
+    }
+})
