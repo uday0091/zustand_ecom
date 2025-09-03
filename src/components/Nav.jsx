@@ -104,6 +104,9 @@ function handlelogout(){
           <Link class="nav-link text-dark px-3 " to="/cartitem">
           <i class="fa-solid fa-cart-shopping fs-3" style={{position:"relative"}} > <span className='text-danger' style={{position:"absolute",left:"10px",top:"-12px"}}>{newcartlength}</span> </i> 
           </Link>
+          <Link className='nav-link text-dark px-3' to='/qrcodescanner'>
+              Qr-Code Scanner
+          </Link>
 
           <div className='user' onClick={handleuser} style={{height:"50px",width:"50px", background:"gray",display:"flex",justifyContent:"center",alignItems:"center",borderRadius:"50%"}}>
 

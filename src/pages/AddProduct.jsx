@@ -152,6 +152,7 @@ const AddProduct = ({setupdate , update}) => {
 
       async function readsingleproduct(){
         let form = document.querySelector('#productform')
+        let savebutton = document.querySelector(".svbtn")
         console.log(form)
         try {
           let data = await fetch(`http://localhost:3400/readprodcut/${id}`)
@@ -197,6 +198,8 @@ const AddProduct = ({setupdate , update}) => {
               
             })
           }
+
+           savebutton.innerHTML="Update" 
 
           handlecommon(e)
 
@@ -368,7 +371,7 @@ const AddProduct = ({setupdate , update}) => {
     <textarea className='col-lg-12 form-control' onChange={(e)=>setProduct({...product, description:e.target.value})} style={{height:"100px"}} name='description'></textarea>
   </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary svbtn">Save</button>
   </div>
 </form>
 

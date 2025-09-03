@@ -15,6 +15,7 @@ import ProductInfo from './pages/Product_info'
 import Cartitem from './pages/Cartitem'
 import Order from './pages/Order'
 import AllProductList from './pages/AllProductList'
+import Qrcode from './components/qrcodescanner'
 function App() {
 
 let {user, auth} = authuser()
@@ -47,6 +48,7 @@ let [update , setupdate]= useState(false)
       <Route path='/userorder' element={user?.user? <Order/>:<Login/>} />
       <Route path='/allproductlist' element={ user?.user?.role =="admin" ? <AllProductList setupdate={setupdate}/>:<Home/>}/>
       <Route path='/addproduct/:id' element={ user?.user?.role =="admin" ? <AddProduct update={update} setupdate={setupdate}/>:<Home/>}/>
+      <Route path='/qrcodescanner' element={ user?.user?<Qrcode/>:<Home/>}/>
 
 
     </Routes>
